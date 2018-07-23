@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 
 import Button from '../UI/Button/Button'
-import Input from '../UI/Input/Input'
+import FormInput from '../UI/FormInput/FormInput'
 // import Spinner from '../UI/Spinner'
 import classes from './EmailSub.css'
 
@@ -124,7 +124,7 @@ class EmailSub extends Component {
             errorMessage = formElement.config.validation.errorMessage
           }
 
-          return (<Input 
+          return (<FormInput 
             key={formElement.id}
             elementType={formElement.config.elementType} 
             elementConfig={formElement.config.elementConfig} 
