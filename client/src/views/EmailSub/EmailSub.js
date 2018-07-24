@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
-
-import Button from '../UI/Button/Button'
-import FormInput from '../UI/FormInput/FormInput'
-// import Spinner from '../UI/Spinner'
-import classes from './EmailSub.css'
+import withStyles from "@material-ui/core/styles/withStyles";
+import Button from '../../components/CustomButtons/Button'
+import FormInput from '../../components/FormInput/FormInput'
 
 import { checkValidity } from '../../shared/validation'
 import createEmailSub from '../../queries/createEmailSub'
+
+// style for this view
+import emailSubFormStyle from "../../assets/jss/views/emailSubFormStyle"
 
 class EmailSub extends Component {
   state = {
     emailSubForm: {
       firstName: {
         elementType: 'input',
+        labelText: "First Name",
         elementConfig: {
           type: 'text',
           placeholder: 'First Name'
@@ -28,6 +30,7 @@ class EmailSub extends Component {
       },
       lastName: {
         elementType: 'input',
+        labelText: "Last Name",
         elementConfig: {
           type: 'text',
           placeholder: 'Last Name'
@@ -42,6 +45,7 @@ class EmailSub extends Component {
       },
       email: {
         elementType: 'input',
+        labelText: "Email Address",
         elementConfig: {
           type: 'text',
           placeholder: 'Valid Email Address'
@@ -93,7 +97,7 @@ class EmailSub extends Component {
       formData[formElementIdentifier] = this.state.emailSubForm[formElementIdentifier].value;
     }
 
-    console.log(formData)
+    //console.log(formData)
 
     this.props.mutate({
       variables: { 
@@ -102,11 +106,13 @@ class EmailSub extends Component {
     }).then(() => {
       console.log('added');
       //this.setState({first: ''});
+    }).catch((e) => {
+      console.log(e)
     });
   }
 
   render() {
-    // console.log(this.props.data)
+    const { classes } = this.props
 
     const formElementsArray = []
     for (let key in this.state.emailSubForm) {
@@ -127,16 +133,18 @@ class EmailSub extends Component {
           return (<FormInput 
             key={formElement.id}
             elementType={formElement.config.elementType} 
+            labelText = {formElement.config.labelText}
             elementConfig={formElement.config.elementConfig} 
             value={formElement.config.value} 
             errorMessage={errorMessage} 
             invalid={!formElement.config.valid} 
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
-            changed={(event) => this.inputChangedHandler(event, formElement.id)} />
+            changed={(event) => this.inputChangedHandler(event, formElement.id)} 
+            formControlProps={{fullWidth: true}}/>
           );
         })}
-        <Button btnType="Success" disabled={!this.state.formIsValid} >Submit</Button>
+        <Button color="rose" onClick={this.onSubmit} className={classes.registerButton} >Submit</Button>
       </form>
     );    
 
@@ -150,4 +158,4 @@ class EmailSub extends Component {
   }
 }
 
-export default graphql(createEmailSub)(EmailSub)
+export default graphql(createEmailSub)(withStyles(emailSubFormStyle)(EmailSub))

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import { Switch, Route, Redirect } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
-import EmailSub from './components/EmailSub/EmailSub'
+import EmailSub from './views/EmailSub/EmailSub'
 
 class App extends Component {
   render() {

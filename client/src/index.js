@@ -14,7 +14,7 @@ import { ApolloLink } from 'apollo-client-preset'
 
 import { createHttpLink } from "apollo-link-http"
 
-const httpLink = new createHttpLink({uri: 'http://localhost:3000/graphql'})
+const httpLink = new createHttpLink({uri: 'http://localhost:4000/graphql'})
 
 const middlewareAuthLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem(AUTH_TOKEN)
