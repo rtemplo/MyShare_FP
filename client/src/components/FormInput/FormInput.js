@@ -9,8 +9,7 @@ import Clear from "@material-ui/icons/Clear";
 // import PropTypes from "prop-types";
 // nodejs library that concatenates classes
 import classNames from "classnames";
-import customInputStyle from "assets/jss/components/customInputStyle";
-
+import formInputStyle from "./FormInputStyle";
 
 const formInput = (props) => {
   const {
@@ -142,4 +141,4 @@ const formInput = (props) => {
   )
 }
 
-export default withStyles(customInputStyle)(formInput);
+export default withStyles(formInputStyle)(formInput);

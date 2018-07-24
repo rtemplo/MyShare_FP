@@ -8,7 +8,7 @@ import { checkValidity } from '../../shared/validation'
 import createEmailSub from '../../queries/createEmailSub'
 
 // style for this view
-import emailSubFormStyle from "../../assets/jss/views/emailSubFormStyle"
+import emailSubFormStyle from "./EmailSubStyle"
 
 class EmailSub extends Component {
   state = {
