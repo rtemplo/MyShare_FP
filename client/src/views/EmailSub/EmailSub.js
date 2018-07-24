@@ -59,7 +59,8 @@ class EmailSub extends Component {
         valid: false,
         touched: false
       }
-    }
+    },
+    formIsValid: false
   }
 
   inputChangedHandler = (event, inputIdentifier) => {
@@ -112,6 +113,7 @@ class EmailSub extends Component {
   }
 
   render() {
+    console.log(this.state.formIsValid)
     const { classes } = this.props
 
     const formElementsArray = []
@@ -144,7 +146,13 @@ class EmailSub extends Component {
             formControlProps={{fullWidth: true}}/>
           );
         })}
-        <Button color="rose" onClick={this.onSubmit} className={classes.registerButton} >Submit</Button>
+        <Button 
+          color="rose" 
+          onClick={this.onSubmit} 
+          className={classes.registerButton} 
+          disabled={!this.state.formIsValid} 
+        >Submit
+        </Button>
       </form>
     );    
 

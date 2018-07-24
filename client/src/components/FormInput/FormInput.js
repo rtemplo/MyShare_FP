@@ -1,6 +1,4 @@
 import React from 'react';
-import classes from './FormInput.css';
-
 import withStyles from "@material-ui/core/styles/withStyles";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -8,7 +6,7 @@ import Input from "@material-ui/core/Input";
 import Check from "@material-ui/icons/Check";
 import Clear from "@material-ui/icons/Clear";
 // nodejs library to set properties for components
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 import customInputStyle from "assets/jss/components/customInputStyle";
@@ -16,6 +14,7 @@ import customInputStyle from "assets/jss/components/customInputStyle";
 
 const formInput = (props) => {
   const {
+    classes,
     key:id,
     elementType, 
     labelText,
